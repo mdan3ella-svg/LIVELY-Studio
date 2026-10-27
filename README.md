@@ -1,3 +1,5 @@
+# LIVELY | SET · SCENE · CAPTURE | Vertascan Interactive Studio
+
 # LIVELY | Set · Scene · Capture
 
 **APXH/ΑΡΧΗ Unified Production Studio — v0.9 Boot & Branding Update**

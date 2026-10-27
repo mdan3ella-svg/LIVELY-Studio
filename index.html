@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>LIVELY | Set · Scene · Capture — Production Studio v0.9</title>
-<meta name="description" content="Game ΑΡΧΗ Engine by Vertascan — browser-native HTML5 game creation. Where every game begins.">
+<title>LIVELY | SET · SCENE · CAPTURE | Vertascan Interactive Studio</title>
+<meta name="theme-color" content="#080d16">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<meta name="description" content="LIVELY | SET · SCENE · CAPTURE — Vertascan Interactive Studio. Browser-based animation, scene design and virtual production.">
 <!-- Webfonts are OPTIONAL and non-blocking: if the network or a CSP blocks them,
      the engine still renders on the system-font fallbacks below. -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
@@ -44,7 +46,7 @@ textarea{font-family:var(--mono);font-size:12px;line-height:1.5;resize:vertical;
 #boot.gone{opacity:0;pointer-events:none}
 #boot .glyph{font-family:var(--disp);font-weight:900;font-size:clamp(52px,9vw,110px);letter-spacing:.08em;color:var(--text);
   text-shadow:0 0 34px rgba(79,209,197,.35)}
-#boot .glyph b{color:var(--amber);text-shadow:0 0 30px rgba(255,122,26,.6)}
+#boot .glyph b,#boot .glyph-dot{color:var(--amber);text-shadow:0 0 30px rgba(255,122,26,.6)}
 #boot .sub{font-family:var(--mono);font-size:12px;letter-spacing:.42em;color:var(--dim);text-transform:uppercase}
 #bootbar{width:min(420px,72vw);height:6px;background:var(--panel2);clip-path:var(--chamfer-sm);overflow:hidden}
 #bootbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amber),var(--cyan));transition:width .18s}
@@ -72,7 +74,7 @@ textarea{font-family:var(--mono);font-size:12px;line-height:1.5;resize:vertical;
 /* top bar */
 #topbar{display:flex;align-items:center;gap:10px;height:52px;padding:0 14px;background:var(--panel);
   border-bottom:1px solid var(--line);flex:none}
-#logo{font-family:var(--disp);font-weight:900;font-size:16px;letter-spacing:.1em;white-space:nowrap}
+#logo{font-family:var(--disp);font-weight:900;font-size:clamp(10px,1.04vw,15px);letter-spacing:.1em;white-space:nowrap}
 #logo b{color:var(--amber)}
 #logo span{color:var(--dim);font-weight:500;font-size:10px;letter-spacing:.3em;margin-left:8px}
 #projname{width:190px;font-weight:600;letter-spacing:.05em;background:transparent;border:1px solid transparent}
@@ -211,15 +213,15 @@ textarea{font-family:var(--mono);font-size:12px;line-height:1.5;resize:vertical;
 
 <!-- BOOT -->
 <div id="boot">
-  <div class="glyph">LIVELY <b>APXH</b></div>
+  <div class="glyph">LIVELY<span class="glyph-dot">.</span></div>
   <div class="sub">Vertascan // Set · Scene · Capture</div>
   <div id="bootbar"><i id="bootfill"></i></div>
-  <div id="bootlog">INITIALIZING…</div>
+  <div id="bootlog">STARTING LIVELY STUDIO…</div>
   <div id="bootfault" role="alert"></div>
   <pre id="bootsrc"></pre>
   <div id="bootns">If initialization does not complete, select Enter Studio or review the boot diagnostic above.<br>
   Use Chrome, Firefox or Safari; 3D dependencies require network access unless bundled.</div>
-  <button id="bootstart">Enter Engine</button>
+  <button id="bootstart">Enter LIVELY Studio</button>
 </div>
 
 <!-- boot watchdog: paints faults on the boot screen instead of hanging silently -->
@@ -284,7 +286,7 @@ textarea{font-family:var(--mono);font-size:12px;line-height:1.5;resize:vertical;
 <!-- APP -->
 <div id="app">
   <header id="topbar">
-    <div id="logo">LIVELY <b>STUDIO</b><span>VERTASCAN · APXH v0.9</span></div>
+    <div id="logo">LIVELY <b>·</b> SET <b>·</b> SCENE <b>·</b> CAPTURE<span>VERTASCAN INTERACTIVE STUDIO</span></div>
     <input id="projname" value="UNTITLED PROTOCOL" aria-label="Project name">
     <button class="tbtn prime" id="btn-play" title="Ctrl+Enter">▶ Play</button>
     <button class="tbtn warn" id="btn-stop" title="Esc">■ Stop</button>
@@ -2967,7 +2969,7 @@ if (typeof module !== 'undefined' && module.exports) module.exports = ARXE;
     var title = ($('#projname').value || 'ΑΡΧΗ GAME').replace(/</g, '&lt;');
     var html = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n' +
       '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
-      '<title>' + title + ' — built with Game ΑΡΧΗ Engine</title>\n' +
+      '<title>' + title + ' — LIVELY | Vertascan Interactive Studio</title>\n' +
       '<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Space+Mono&display=swap" rel="stylesheet">\n' +
       '<style>html,body{margin:0;height:100%;background:#04060b;overflow:hidden}' +
       'canvas{position:fixed;inset:0;display:block;width:100vw;height:100vh}' +
@@ -3285,7 +3287,7 @@ if (typeof module !== 'undefined' && module.exports) module.exports = ARXE;
     'ARMING PHYSICS SOLVER',
     'CHARGING PARTICLE LATTICE',
     'TUNING PROCEDURAL AUDIO BUS',
-    'LIVELY CORE ONLINE'
+    'LIVELY STUDIO READY'
   ];
   function boot() {
     var i = 0;
@@ -3297,7 +3299,7 @@ if (typeof module !== 'undefined' && module.exports) module.exports = ARXE;
       i++;
       if (i >= BOOT_LINES.length) {
         clearInterval(iv);
-        blog.textContent = 'LIVELY CORE ONLINE';
+        blog.textContent = 'LIVELY STUDIO READY';
         $('#bootstart').style.display = 'block';
         try { $('#bootstart').focus(); } catch (e) { /* focus can be denied in sandboxes */ }
         // Enter promptly; the manual control remains a fallback if automated entry fails.
@@ -3318,7 +3320,7 @@ if (typeof module !== 'undefined' && module.exports) module.exports = ARXE;
     ED.cam.zoom = canvas.width < 700 ? 0.6 : 0.85;
     loadTemplate('platformer');
     ED.undo.length = 0; ED.redo.length = 0;
-    log('LIVELY STUDIO v0.9 — APXH engine core ready.', 'ok');
+    log('LIVELY | SET · SCENE · CAPTURE — Vertascan Interactive Studio ready.', 'ok');
     log(glr ? 'WebGL2 mesh path online — native GLB import armed' : 'WebGL2 unavailable — running on the Canvas2D fallback path', glr ? 'ok' : 'warn');
     log('Ctrl+K command palette · Ctrl+Enter play · Esc stop · drag to move nodes · wheel to zoom', 'info');
     if (!userGesture) log('Audio arms on your first click or keypress.', 'info');
@@ -5359,7 +5361,7 @@ var ARXE3D = (function () {
     var dataJSON = JSON.stringify(E3.data);
     var html = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n' +
       '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">\n' +
-      '<title>' + title + ' — built with Game ΑΡΧΗ Engine 3D</title>\n' +
+      '<title>' + title + ' — LIVELY | Vertascan Interactive Studio</title>\n' +
       '<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Mono&display=swap" rel="stylesheet">\n' +
       '<style>html,body{margin:0;height:100%;background:#04060b;overflow:hidden;touch-action:none}' +
       '#s{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:#04060b;color:#c8d3e8;font-family:Orbitron,sans-serif;cursor:pointer}' +
