@@ -23,6 +23,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install pinned offline 3D vendor scripts
+        run: node scripts/install-vendor.mjs
       - name: Verify bundled application
         run: node scripts/validate.mjs
       - name: Configure Pages
