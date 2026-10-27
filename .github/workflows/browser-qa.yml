@@ -1,0 +1,32 @@
+name: LIVELY Chromium smoke QA
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  browser-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build repository-local 3D runtime
+        run: node scripts/install-vendor.mjs
+      - name: Validate syntax and files
+        run: node scripts/validate.mjs
+      - name: Install test browser
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Test launch and 2D/3D interactions
+        run: node scripts/browser-smoke.mjs
+      - name: Save QA screenshot on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lively-browser-failure
+          path: lively-smoke-failed.png
+          if-no-files-found: ignore
